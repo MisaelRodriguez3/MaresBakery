@@ -148,7 +148,7 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'maresBakery_db',
+        'NAME': 'maresbakery_db',
         'USER': 'maresbakery_db_user',
         'PASSWORD': 'ijnipPy0VyydO81wPhVHMuakVt3GVyt6',
         'HOST': 'dpg-cj5imjacn0vc73c6ms10-a.oregon-postgres.render.com',
