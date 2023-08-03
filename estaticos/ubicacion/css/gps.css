@@ -1,0 +1,102 @@
+.location {
+    position: relative;
+    top:60px;
+    width: 80%;
+    margin: 20px auto;
+    padding: 11px 11px; /* 80px para arriba y abajo, 10px para los lados */
+    box-sizing: border-box;
+    border: 5px solid #ccc;
+}
+
+.location iframe {
+    width: 100%;
+}
+
+.contact-us {
+    position: relative;
+    top:20px;
+    width: 80%;
+    margin: 40px auto;
+}
+
+.row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact {
+    flex-basis: 48%;
+    margin-bottom: 30px;
+}
+
+.contact div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.contact div .bx {
+    font-size: 28px;
+    color: #f44336;
+    margin-right: 30px;
+}
+
+.contact div p {
+    padding: 0;
+}
+
+.contact div h5 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: 100;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 17px;
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.hero-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #f44336;;
+    border: 1px solid #f44336;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+    color: #fff;
+}
+
+.contact .mensaje{
+    display: flex;
+    background: rgb(1, 150, 150);
+    margin: 15px 0;
+    justify-content: center;
+    padding: 5px;
+    color:#fff
+}
+
+@media (max-width: 700px) {
+    .row {
+        flex-wrap: wrap;
+    }
+
+    .contact {
+        flex-basis: 100%;
+    }
+}

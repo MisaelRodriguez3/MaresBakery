@@ -1,0 +1,259 @@
+i {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.total {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.vacio {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.botones button {
+  background-color: black;
+  color: white;
+  margin-right: 20px;
+  height: 35px;
+  width: 10em;
+  border-radius: 5px;
+}
+
+.contenedor {
+  border: 1.25px solid black;
+  margin: 135px 20em 100px 20em;
+  border-radius: 20px;
+  background: silver;
+  padding: 10px;
+}
+.encabezado {
+  text-align: center;
+  background: silver;
+  padding: 10px;
+  top: 100px;
+}
+.item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: #eccca1;
+  margin: 10px 1em 10px 1em;
+  border-radius: 20px;
+  border: 1px solid black;
+
+}
+.info {
+  flex-direction: column;
+  text-align: center;
+  margin-left: 25px;
+}
+
+.img {
+  width: 7em;
+  height: 7em;
+  border-radius: 10px;
+  margin-right: 25px;
+  margin-top: 10px;
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: 10px;
+}
+.nombre-item {
+  margin-top: 10px;
+  background: whitesmoke;
+  height: 25px;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.nombre-texto {
+  display: inline-block;
+  font-size: 17.5px;
+}
+
+.precio-item {
+  margin-top: 10px;
+  background: whitesmoke;
+  height: 25px;
+  width: 200px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.cantidad-item {
+  margin-top: 10px;
+  background: whitesmoke;
+  height: 25px;
+  width: 150px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.cantidad {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+#max {
+  border-radius: 100%;
+  background-color: whitesmoke;
+  cursor: pointer;
+  border: solid black 1px;
+  margin-left: 5px;
+  margin-top: 7px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#min {
+  border-radius: 100%;
+  background-color: whitesmoke;
+  cursor: pointer;
+  border: solid black 1px;
+  margin-right: 5px;
+  margin-top: 7px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.borrar-item {
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.total-compra {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+  .contenedor {
+      margin: 20px;
+      margin-top: 100px;
+  }
+
+  .item {
+      flex-direction: column;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+  }
+  .img-item {
+      margin-bottom: 10px;
+      display: flex;
+      margin-left: 20px;
+  }
+
+  .info {
+      margin-left: 0;
+  }
+  .nombre-item,
+  .precio-item {
+      width: 100%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .contenedor {
+      margin: 100px 5em 80px 5em;
+  }
+
+}
+  /* Estilos para la ventana modal */
+.modal-overlay, .compra-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-container, .compra-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modal-container h3 {
+  margin-top: 0;
+}
+
+.modal-container form, .compra-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container label, .compra-container label {
+  margin-bottom: 10px;
+}
+
+.modal-container input[type="date"]{
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.modal-container button[type="submit"], .compra-container button[type="submit"] {
+  padding: 10px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.modal-container button[type="submit"]:hover, .compra-container button[type="submit"]:hover {
+  background-color: gray;
+}
+
+#pay_method {
+  margin-top: 15px;
+}
+
+input[type="radio"] {
+  margin-right: 20px;
+}
+
+.radio-container {
+  margin-bottom: 20px;
+}
+
