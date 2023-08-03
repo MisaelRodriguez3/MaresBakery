@@ -7,7 +7,7 @@ from django.http import JsonResponse
 
 # vistas de las distintas categorias
 def mostrar_productos(request):
-    productos = Productos.objects.exclude(activo=False)
+    productos = Productos.objects.exclude(activo=True)
     return render(request, "categorias/Todos.html", {"productos": productos})
 
 
