@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static 'inicio/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'inicio/css/footer.2.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'inicio/css/mas.css' %}">
+
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+    <!-- Cargar estilos mas rapido -->
+    <link rel="preload" href="{% static 'inicio/css/mas.css' %}" as="style">
+        
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Base</title>
+</head>
+<body class="prueba">
+    <header>
+    <nav>
+        <!-- flex padre (parte superior)-->
+        <div class="nav-bar">
+            <!-- icono para abrir el nav -->
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><img src="{% static 'inicio/img/log.png' %}"></span>
+
+
+            <!-- en medio media -->
+            <div class="menu">
+                <!-- flex media -->
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#"><img src="{% static 'inicio/img/log.png' %}" alt="Mares" /></a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <!-- flex -->
+                <ul class="nav-links">
+                    <li>
+                        <a href="{% url 'Inicio' %}">Inicio</a>
+                    </li>
+                    <li id="dropdown">
+                        <a href="#">Categorías</a>
+                        <!-- Menú desplegable -->
+                        <ul id="dropdown-menu">
+                            <li><a href="{% url 'Todos' %}">Todos</a></li>
+                            <li><a href="{% url 'Pan_fino' %}">Pan fino</a></li>
+                            <li><a href="{% url 'Lo_mismo' %}">El pan de siempre</a></li>
+                            <li><a href="{% url 'Bolillo_y_pieza' %}">Bolillo y pieza</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'ubicacion:conocenos' %} " class="top-show">Conócenos</a></li>
+                </ul>
+            </div>
+
+
+            <!-- flex luna e iconos-->
+            <form action="/buscar" method="get">
+                <div class="darkLight-searchBox">
+
+                    <div class="searchBox">
+                        <!-- flex -->
+                        <div class="searchToggle">
+                            <i class='bx bx-x cancel'></i>
+                            <i class='bx bx-search search'></i>
+                        </div>
+
+                        <!-- Cuadro de busqueda -->
+                        <div class="search-field">
+                            <input type="text" name="cuadro" placeholder="Search...">
+                            <button type="submit"><i class="bx bx-search"></i></button>        
+                        </div>
+                </div>
+            </form>
+
+
+                <div class="gps">
+                    <a href="{% url 'ubicacion:Ubicacion' %}">
+                        <i class='bx bxs-map'></i>
+                    </a>
+                </div>
+
+                <div class="usuario">
+                    <a href="#">
+                        {% if user.is_authenticated %}
+                            <i class='bx bxs-user'></i>
+                            <img src="{% static 'inicio/img/arrow.svg' %}"class="menu__arrow">
+                        {% else %}
+                            <i class='bx bxs-user'></i>
+                        {% endif %}
+                    </a>
+                    <ul class="submenuu">
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}">Perfil</a></li>
+                            <li><a href="{% url 'account_logout' %}">Cerrar Sesión</a></li>
+                        {% else %}
+                            <li><a href="{% url 'account_login' %}">Iniciar Sesión</a></li>
+                            <li><a href="{% url 'account_signup' %}">Registrarse</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <div class="carro">
+                    <a href="{% url 'carrito' %}">
+                        <i class='bx bxs-cart' ></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+    <script src="{% static 'inicio/js/script.js' %}"></script>
+</header>
+
+<section class="zona1">
+    <div class="image-container">
+      <img src="{% static 'inicio/img/panes2.jpg' %}">
+    </div>
+    <div class="text-box">
+      <h1>Expendio de pan</h1>
+      <p>¡Ven y recoge tu compra!</p>
+      <a href="{% url 'ubicacion:Ubicacion' %}" class="btn">Conoce nuestra ubicación</a>
+    </div>
+</section>
+
+<!-- contendio del inicio -->
+
+
+
+<h1 class="heading-1">¡Hola!</h1>
+
+<section class="slider">
+    <div class="slider-container">
+        {% for producto in trending_productos %}
+        <div class="item">
+            <div class="box">
+                <div class="slide-img">
+                    <img src="{{ producto.Imagen }}" alt="1">
+                    <div class="overlay">
+                        <a onclick="info_item('{{ producto.IDproducto }}')" class="buy-btn">Ver detalles</a>	
+                    </div>
+                </div>
+                <div class="detail-box">
+                    <div class="type">
+                        <a href="#">{{ producto.Nombre }}</a>
+                        <span>$ {{ producto.Precio }}</span>
+                    </div>
+
+                    <a>
+                        <i  data-item-url="{% url 'agregar' producto.IDproducto %}" data-csrf-token="{{ csrf_token }}" class='bx bxs-plus-circle agregar-item'></i>
+                    </a>
+                </div>
+            </div>		
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{% static 'inicio/js/masjs.js' %}"></script>
+</section>
+
+
+<!-- lkfjalkfjalsa -->
+
+
+<section class="about section" id="about">
+    <div class="about__container container grid">
+        <div class="about__data">
+            <h2 class="section__title about__title">Explora nuestras<br>categorías de panes </h2>
+            <p class="about__description">
+                Si deseas sumergirte en el apetitoso mundo de nuestras deliciosas variedades de panes, te invitamos a hacer clic en el siguiente botón para explorar detalladamente todas las emocionantes categorías y descubrir más acerca de nuestros exquisitos productos horneados
+            </p>
+            <a href="{% url 'Todos' %}" class="button">Categorías</a>
+        </div>
+
+        <div class="about__img">
+            <div class="about__img-overlay">
+                <img src="{% static 'inicio/img/about2.jpg' %}" alt="" class="about__img-one">
+            </div>
+
+            <div class="about__img-overlay">
+                <img src="{% static 'inicio/img/about.png' %}" alt="" class="about__img-two">
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+    <div class="separador">
+        <div class="contenido-separador contenedor">
+            <h2>¡Descubre más sobre nosotros!</h2>
+            <p>Sumérgete en la esencia de nuestra marca, explorando nuestros valores arraigados, nuestra incansable ambición por crecer y la dedicación que ponemos en cada paso para llegar a tu mesa con productos excepcionales y llenos de sabor.</p>
+            <a href="{% url 'ubicacion:conocenos' %}" class="button">conócenos</a>
+        </div>
+    </div>
+
+<br>
+<!-- ccccc -->
+
+<section class="service" id="service">
+    <div class="heading">
+        <h2>Datos acerca de los panes</h2>
+    </div>
+
+    <div class="service-content">
+        <div class="row">
+            <div class="s s-one">
+                <i class='bx bxs-baguette'></i> 
+            </div>
+            <h3>Tipo de Harina Utilizada</h3>
+            <p> Los panes pueden variar según el tipo de harina empleada. Los más comunes son el pan de trigo, pan integral, pan de centeno, pan de maíz y pan de avena, cada uno con diferentes propiedades nutricionales y sabores distintos.</p>
+        </div>
+
+        <div class="row">
+            <div class="s s-two">
+                <i class='bx bxs-wrench'></i> 
+            </div>
+            <h3> Método de Elaboración</h3>
+            <p> Los métodos de elaboración del pan pueden ser diversos, como el pan amasado a mano, el pan fermentado con levadura, el pan sin levadura (como el pan plano o de pita) y el pan de masa madre, que utiliza cultivos de bacterias.</p>
+        </div>
+
+        <div class="row">
+            <div class="s s-three">
+                <i class='bx bxs-coffee'></i>
+            </div>
+            <h3>Textura y Miga</h3>
+            <p>La textura del pan puede variar desde suaves y esponjosos hasta densos y rústicos. La miga se refiere a la estructura interna del pan, que puede ser abierta y alveolada en panes de masa madre o compacta en panes más densos.</p>
+        </div>
+
+        <div class="row">
+            <div class="s s-four">
+                <i class='bx bxs-hourglass-top'></i> 
+            </div>
+            <h3>Tiempo de Conservación</h3>
+            <p> Algunos panes tienen una vida útil más corta debido a su alta humedad y menor cantidad de conservantes, mientras que otros, como el pan de molde, pueden durar más tiempo debido a su fabricación y envasado específico.</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- fin del contenido del inicio -->
+
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#">
+                    <img src="{% static 'inicio/img/logo-removebg-preview.png' %}" alt="Logo de SLee Dw">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>Empresa con giro de venta de pan, nos comprometemos a entregarte pan de calidad al mejor precio</p>
+        </div>
+        <div class="box">
+            <h2>SIGUENOS</h2>
+            <div class="red-social">
+                <a href="https://www.facebook.com/profile.php?id=100093233154695&mibextid=ZbWKwL" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/expendiomares21/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://twitter.com/Expedio_Mares" target="_blank" class="fa fa-twitter"></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2021 <b>Panes de calidad al mejor precio</b>   449-198-5393</small>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'inicio/js/animaciones.js' %}"></script>
+<script src="{% static 'inicio/js/anim.js' %}"></script>
+<script src="{% static 'inicio/js/dropdown.js' %}"></script>
+
+</body>
+</html>

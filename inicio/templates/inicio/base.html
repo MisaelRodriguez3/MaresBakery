@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="{% static 'inicio/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'inicio/css/footer.2.css' %}">
+
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+        
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Base</title>
+</head>
+<body>
+    <header>
+    <nav>
+        <!-- flex padre (parte superior)-->
+        <div class="nav-bar">
+            <!-- icono para abrir el nav -->
+            <i class='bx bx-menu sidebarOpen' ></i>
+            <span class="logo navLogo"><a href="{% url 'Inicio' %}"><img src="{% static 'inicio/img/log.png' %}"></a></span>
+
+
+            <!-- en medio media -->
+            <div class="menu">
+                <!-- flex media -->
+                <div class="logo-toggle">
+                    <span class="logo"><a href="{% url 'Inicio' %}"><img src="{% static 'inicio/img/log.png' %}" alt="Mares" /></a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <!-- flex -->
+                <ul class="nav-links">
+                    <li>
+                        <a href="{% url 'Inicio' %}">Inicio</a>
+                    </li>
+                    <li id="dropdown">
+                        <a href="#">Categorías</a>
+                        <!-- Menú desplegable -->
+                        <ul id="dropdown-menu">
+                            <li><a href="{% url 'Todos' %}">Todos</a></li>
+                            <li><a href="{% url 'Pan_fino' %}">Pan fino</a></li>
+                            <li><a href="{% url 'Lo_mismo' %}">El pan de siempre</a></li>
+                            <li><a href="{% url 'Bolillo_y_pieza' %}">Bolillo y pieza</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'ubicacion:conocenos' %}" class="top-show">Conócenos</a></li>
+                </ul>
+            </div>
+
+            <!-- flex luna e iconos-->
+            <form action="/buscar" method="get">
+                <div class="darkLight-searchBox">
+
+                    <div class="searchBox">
+                        <!-- flex -->
+                        <div class="searchToggle">
+                            <i class='bx bx-x cancel'></i>
+                            <i class='bx bx-search search'></i>
+                        </div>
+
+                        <!-- Cuadro de busqueda -->
+                        <div class="search-field">
+                            <input type="text" name="cuadro" placeholder="Search...">
+                            <button type="submit"><i class="bx bx-search"></i></button>        
+                        </div>
+                </div>
+            </form>
+
+
+            <div class="gps">
+                <a href="{% url 'ubicacion:Ubicacion' %}">
+                    <i class='bx bxs-map'></i>
+                </a>
+            </div>
+
+            <div class="usuario">
+                <a href="#">
+                    {% if user.is_authenticated %}
+                        <i class='bx bxs-user'></i>
+                        <img src="{% static 'inicio/img/arrow.svg' %}"class="menu__arrow">
+                    {% else %}
+                        <i class='bx bxs-user'></i>
+                    {% endif %}
+                </a>
+                <ul class="submenuu">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}">Perfil</a></li>
+                        <li><a href="{% url 'account_logout' %}">Cerrar Sesión</a></li>
+                    {% else %}
+                        <li><a href="{% url 'account_login' %}">Iniciar Sesión</a></li>
+                        <li><a href="{% url 'account_signup' %}">Registrarse</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="carro">
+                <a href="{% url 'carrito' %}">
+                    <i class='bx bxs-cart' ></i>
+                </a>
+            </div>
+
+            </div>
+        </div>
+    </nav>
+    <script src="{% static 'inicio/js/script.js' %}"></script>
+</header>
+
+
+
+<!-- contendio dinamico -->
+
+{% block content %}
+
+{% endblock %}
+
+
+<!-- fin del contenido -->
+
+<footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#">
+                    <img src="{% static 'inicio/img/logo-removebg-preview.png' %}" alt="Logo de SLee Dw">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>Empresa con giro de venta de pan, nos comprometemos a entregarte pan de calidad al mejor precio</p>
+        </div>
+        <div class="box">
+            <h2>SIGUENOS</h2>
+            <div class="red-social">
+                <a href="https://www.facebook.com/profile.php?id=100093233154695&mibextid=ZbWKwL" target="_blank" class="fa fa-facebook"></a>
+                <a href="https://www.instagram.com/expendiomares21/" target="_blank" class="fa fa-instagram"></a>
+                <a href="https://twitter.com/Expedio_Mares" target="_blank" class="fa fa-twitter"></a>
+            </div>
+        </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2021 <b>Panes de calidad al mejor precio</b>   449-198-5393</small>
+    </div>
+</footer>
+<script src="{% static 'inicio/js/dropdown.js' %}"></script>
+
+</body>
+</html>

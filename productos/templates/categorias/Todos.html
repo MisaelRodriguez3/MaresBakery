@@ -1,0 +1,38 @@
+{% extends "Inicio/base.html" %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+  {% load static %}
+  {% block content %}
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Productos</title>
+  <link href="{% static 'css/Productos.css' %}" rel="stylesheet">
+  <!-- Cargar estilos rapido uwu -->
+  <link rel="preload" href="{% static 'css/Productos.css' %}" as="style">
+</head>
+<body>
+    <header>
+      <h1>Todos</h1>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </header>
+  <div class="container-items">
+    {% for producto in productos %}
+        <div class="item" onclick="info_item('{{ producto.IDproducto }}')">
+          <figure>
+            <img src="{{ producto.Imagen }}" alt="producto">
+          </figure>
+          <div class="info-product">
+            <h2>{{ producto.Nombre }}</h2>
+            <p class="price">${{ producto.Precio }}</p>
+          </div>
+        </div>
+    {% endfor %} 
+  </div>
+  <script src="{% static 'js/info_item.js' %}"></script>
+  {% endblock %}
+</body>
+</html>

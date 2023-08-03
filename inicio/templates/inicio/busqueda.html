@@ -1,0 +1,43 @@
+{% extends 'Inicio/base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}{% block content %}
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'inicio/css/busqueda.css' %}" />
+    <script src="{% static 'inicio/js/busqueda.js' %}"></script>
+  </head>
+  <body>
+    <div id="contenedor">
+        <h1>Resultados de la búsqueda</h1>
+    
+        <!-- Display Products -->
+        <h2>Productos</h2>
+        {% if resultados.productos %}
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for producto in resultados.productos %}
+            <tr class="product-row" onclick="info_item('{{ producto.ID }}')">
+              <td><img src="{{ producto.Imagen }}" alt="{{ producto.Nombre }}" /></td>
+              <td>{{ producto.Nombre }}</td>
+              <td>${{ producto.Precio }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>No se encontraron productos.</p>
+        {% endif %}
+      </div>
+    </body>
+    </html>
+    {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,192 @@
+{% extends "Inicio/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'Conocenos/styles.css' %}">
+</head>
+
+<body>
+    <section class="seccion1">
+        <div class="seccion1-content container">
+            <h1>Conócenos</h1>
+            <p>Expendio de pan "Mares", un expendio con un delicioso pan para el gusto de varios
+                paladares, te invitamos a leer esta sección para conocer mas acerca de quienes somos
+                y nuestra razon de ser.
+            </p>
+        </div>
+    </section>
+
+    <section class="seccion2">
+        <div class="seccion2-2"></div>
+        <div class="seccion2-1">
+            <h2>Nuestro origen</h2>
+            <p>
+                El expendio fue fundado el 4 de noviembre del 2021, 
+                contando con casi 2 años de fundación, 
+                brindando el mejor servicio de la mano del señor Mares y su familia.
+                Esta idea del expendio surgió a partir del hijo del dueño, 
+                Jorge Alberto, quien motivó a sus padres a abrir un expendio, 
+                surgiendo como idea y base, la panadería familiar “Mares”.
+            </p>
+            <a href="{% url 'Todos' %}" class="btn-1">Haz tu pedido ya</a>
+        </div>
+    </section>
+
+    <section class="seccion3">
+        <img class="seccion3-img" src="{% static 'Conocenos/img/donas.png' %}" alt="">
+        <div class="seccion3-content container">
+            <h2>Misión, Visión y valores</h2>
+            <p class="txt-p">Lo que nos da el valor como empresa, aquí conocerás sobre nuestro objetivo, misión y valores que tomamos dentro de este negocio.
+            </p>
+            <div class="seccion3-group">
+                <div class="seccion3-1">
+                    <img src="{% static 'Conocenos/img/dartboard.png' %}" alt="">
+                    <h3>Misión</h3>
+                    <p>Nuestro objetivo como empresa es lograr 
+                        brindar un servicio y productos de calidad a nuestros clientes, 
+                        así como expandirnos por toda la ciudad de Aguascalientes 
+                        gracias al apoyo brindado y a nuestros productos que día a día 
+                        nos esforzamos para brindar con una buena actitud y responsabilidad.
+                    </p>
+                </div>
+
+                <div class="seccion3-1">
+                    <img src="{% static 'Conocenos/img/vision.png' %}" alt="">
+                    <h3>Visión</h3>
+                    <p>Pretendemos llegar a todo el público de nuestro querido Aguascalientes, 
+                        mejorar nuestra calidad lo mejor posible, y situarnos en los mejores expendios de la ciudad.
+                    </p>
+                </div>
+
+                <div class="seccion3-1">
+                    <img src="{% static 'Conocenos/img/respect.png' %}" alt="">
+                    <h3>Valores</h3>
+                    <p>Para llegar a ser lo que pretendemos, nos comprometemos a ser una empresa responsable, 
+                        comunicativa con cliente-empleado, respetuosa, atender de manera organizada y sobre todo, el respeto.
+                    </p>
+                </div>
+            </div>
+            <a href="{% url 'ubicacion:Ubicacion' %}" class="btn-1">Visítanos</a>
+        </div>
+    </section>
+
+    <main class="cssdistgn">
+
+        <div class="cssdistgn-content container">
+            <h2>Cosas que nos distinguen</h2>
+
+            <div class="cssdistgn-group">
+                <div class="cssdistgn-1">
+                    <img src="{% static 'Conocenos/img/tongue.png' %}">
+                    <h3>Sabor</h3>
+                </div>
+                <div class="cssdistgn-1">
+                    <img src="{% static 'Conocenos/img/family.png' %}">
+                    <h3>Unión</h3>
+                </div>
+                <div class="cssdistgn-1">
+                    <img src="{% static 'Conocenos/img/customer-service.png' %}">
+                    <h3>Servicios al cliente</h3>
+                </div>
+            </div>
+            <p> Nos caracterizamos como uno de los pocos expendios de pan que cuentan con 
+                su propia página web dentro de Aguascalientes, somos una empresa 
+                con intención de la innovación tecnológica para impulsar nuestro negocio.</p>
+        </div>
+    </main>
+
+    <section class="seccion5">
+        <div class="seccion5-1">
+            <h2>Pan de calidad, al mejor precio!</h2>
+            <p>
+                Si haz llegado hasta acá, ¿qué esperas?, adquiere nuestros productos de calidad, 
+                explora nuestra página y adéntrate en el mundo del pan traído desde panadería "Mares"
+            </p>
+        </div>
+        <div class="seccion5-2">
+            <img src="{% static 'Conocenos/img/klipartz.com.png' %}">
+        </div>
+    </section>
+
+    <!-- <section class="general">
+        <div class="general-3"></div>
+        <div class="general-1">
+            <h2>Nuestro origen</h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus tempora accusamus quos nesciunt
+                unde optio voluptatum doloremque tenetur dolores consequatur? Earum quidem ratione assumenda consectetur
+                recusandae officia odio similique! Doloribus.
+            </p>
+        </div>
+    </section> -->
+
+    <!-- <section class="nuestro pan container">
+        <h2>Blog</h2>
+        <p>Lorem ipsum,imus! Cumque, illo inventore.</p>
+
+        <div class="nuestro pan-content">
+            <div class="nuestro pan-1">
+                <img src="img/bread-4183225.jpg">
+                <h3>Esponjoso</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quia iusto, neque iste eaque,
+                    repudiandae nisi ea ipsa hic fugit unde! Dolore repellat sed dolorum dolor nisi numquam, debitis
+                    perspiciatis.
+                </p>
+            </div>
+            <div class="nuestro pan-1">
+                <img src="img/croissants-569075.jpg">
+                <h3>Rico</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quia iusto, neque iste eaque,
+                    repudiandae nisi ea ipsa hic fugit unde! Dolore repellat sed dolorum dolor nisi numquam, debitis
+                    perspiciatis.
+                </p>
+            </div>
+            <div class="nuestro pan-1">
+                <img src="img/croissants-174170.jpg">
+                <h3>Suave</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quia iusto, neque iste eaque,
+                    repudiandae nisi ea ipsa hic fugit unde! Dolore repellat sed dolorum dolor nisi numquam, debitis
+                    perspiciatis.
+                </p>
+            </div>
+        </div>
+        <a href="" class="btn-1">Haz tu pedido ya</a>
+    </section> -->
+
+    <!-- <section class="panes">
+        <div class="panes-content container">
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+            <article class="panes__columna">
+                <img src="">
+            </article>
+        </div>
+    </section> -->
+
+</body>
+{% endblock %}
+</html>

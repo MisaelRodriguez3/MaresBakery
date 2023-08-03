@@ -1,0 +1,47 @@
+@media(max-width:700px){
+    .form{
+        width: 220px;
+        
+        /* padding: 20px; */
+        margin: auto;
+    }
+    .form h1{
+        font-size: 15px;
+    }
+    .form h2{
+        font-size: 24px;
+
+    }
+    .form h3{
+        font-size: 14px;
+    }
+    .box{
+        border:2px solid #253467;
+        padding: 5px 10px;
+        padding-bottom: 5px;
+        border-radius: 25px;
+        margin-bottom: 20px;
+    }
+    .box1{
+        border:2px solid #253467;
+        padding: 5px 10px;
+        padding-bottom: 5px;
+        border-radius: 25px;
+        margin-bottom: 20px;
+    }
+    ::placeholder{
+        font-size: 10px;
+    }
+    .inputs a{
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    .submit{
+        padding: 5px;
+        font-size: 12px;
+    }
+    /* .container{
+        width: 330px;
+
+    } */
+}
