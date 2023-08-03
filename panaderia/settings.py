@@ -25,10 +25,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default="django-insecure-az)ajpk=hn#0ig3ihbxjz41f0mm^!h5ft4=y%4e*t9-ab--to!")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -143,11 +146,14 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default='postgres://maresbakery_db_user:ijnipPy0VyydO81wPhVHMuakVt3GVyt6@dpg-cj5imjacn0vc73c6ms10-a/maresbakery_db',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'MaresBakery_DB',
+        'USER': 'maresbakery_db_user',
+        'PASSWORD': 'ijnipPy0VyydO81wPhVHMuakVt3GVyt6',
+        'HOST': 'dpg-cj5imjacn0vc73c6ms10-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
 
 
