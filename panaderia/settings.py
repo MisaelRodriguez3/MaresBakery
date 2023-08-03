@@ -146,17 +146,22 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'maresbakery_db',
-        'USER': 'maresbakery_db_user',
-        'PASSWORD': 'ijnipPy0VyydO81wPhVHMuakVt3GVyt6',
-        'HOST': 'dpg-cj5imjacn0vc73c6ms10-a.oregon-postgres.render.com',
-        'PORT': '5432',
-    }
-}
+    'default': dj_database_url.config(        # Feel free to alter this value to suit your needs.        
+        default='postgresql://postgres:postgres@localhost:5432/panaderia',      
+        conn_max_age=600    )}
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'maresbakery_db',
+#        'USER': 'maresbakery_db_user',
+#        'PASSWORD': 'ijnipPy0VyydO81wPhVHMuakVt3GVyt6',
+#        'HOST': 'dpg-cj5imjacn0vc73c6ms10-a.oregon-postgres.render.com',
+#        'PORT': '5432',
+#    }
+#}
 
+#dpg-cj5imjacn0vc73c6ms10-a
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
