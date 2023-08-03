@@ -22,7 +22,7 @@ body{
     display: flex; */
     overflow: hidden;
     height: 100vh;
-    background-image: url('/autentication/static/img/fondo.jpg');
+    background-image: url('/estaticos/img/fondo.jpg');
     display: flex;
     align-items: center;
     justify-content: center;
