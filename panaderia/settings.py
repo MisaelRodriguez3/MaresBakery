@@ -146,9 +146,10 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(        # Feel free to alter this value to suit your needs.        
-        default='postgresql://postgres:postgres@localhost:5432/panaderia',      
-        conn_max_age=600    )}
+    'default': dj_database_url.config(     
+        default='postgresql://maresfamily:Yng5cOSq33YobpWJaWmVWurfSEH9eFgW@dpg-cj62df4l975s73fk72o0-a/maresbakery_db_fnhd',      
+        conn_max_age=600    
+        )}
 
 #DATABASES = {
 #    'default': {
