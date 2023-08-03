@@ -147,7 +147,7 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 
 DATABASES = {
     'default': dj_database_url.config(     
-        default='postgresql://maresfamily:Yng5cOSq33YobpWJaWmVWurfSEH9eFgW@dpg-cj62df4l975s73fk72o0-a/maresbakery_db_fnhdJ',      
+        default='postgres://maresfamily:Yng5cOSq33YobpWJaWmVWurfSEH9eFgW@dpg-cj62df4l975s73fk72o0-a.oregon-postgres.render.com/maresbakery_db_fnhd',      
         conn_max_age=600    
         )}
 
