@@ -148,7 +148,7 @@ WSGI_APPLICATION = "panaderia.wsgi.application"
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgresql://postgres:postgres@localhost:5432/panaderia',
+        default='postgres://maresbakery_db_user:ijnipPy0VyydO81wPhVHMuakVt3GVyt6@dpg-cj5imjacn0vc73c6ms10-a/maresbakery_db',
         conn_max_age=600
     )
 }
@@ -189,7 +189,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = "estaticos/"
+
 if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
