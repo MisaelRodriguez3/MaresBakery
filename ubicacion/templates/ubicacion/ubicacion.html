@@ -1,77 +1,66 @@
-{% extends "Inicio/base.html" %}
-{% load static %}
-
-
-{% block content %}
-
-{% block styles %}
-    <link rel="stylesheet" href="{% static 'ubicacion/css/gps.css' %}">
+{% extends "inicio/base.html" %} {% load static %} {% block content %} {% block
+styles %}
+<link rel="stylesheet" href="{% static 'ubicacion/css/gps.css' %}" />
 {% endblock %}
 
 <section class="location">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3703.327160985701!2d-102.26135692568585!3d21.844912859249124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ed8bc14e652b%3A0xe899443879587bbb!2sVista%20del%20Amanecer%20105%2C%20Lomas%20de%20Vistabella%2C%2020299%20Aguascalientes%2C%20Ags.!5e0!3m2!1ses!2smx!4v1687197459654!5m2!1ses!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3703.327160985701!2d-102.26135692568585!3d21.844912859249124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429ed8bc14e652b%3A0xe899443879587bbb!2sVista%20del%20Amanecer%20105%2C%20Lomas%20de%20Vistabella%2C%2020299%20Aguascalientes%2C%20Ags.!5e0!3m2!1ses!2smx!4v1687197459654!5m2!1ses!2smx"
+    width="600"
+    height="450"
+    style="border: 0"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
 </section>
 
 <section class="contact-us">
-    <div class="row">
-        <div class="contact">
-            <div>
-                <i class='bx bxs-home'></i>
-                <span>
-                    <p>Vista del Amanecer #105</p>
-                    <p>colonia Lomas de Vista Bell</p>
-                </span>
-            </div>
+  <div class="row">
+    <div class="contact">
+      <div>
+        <i class="bx bxs-home"></i>
+        <span>
+          <p>Vista del Amanecer #105</p>
+          <p>colonia Lomas de Vista Bell</p>
+        </span>
+      </div>
 
-            <div>
-                <i class='bx bxs-phone'></i>
-                <span>
-                    <p>+52 449 106 2469 </p>
-                </span>
-            </div>
+      <div>
+        <i class="bx bxs-phone"></i>
+        <span>
+          <p>+52 449 106 2469</p>
+        </span>
+      </div>
 
+      <div>
+        <i class="bx bxs-envelope"></i>
+        <span>
+          <p>expendiomares21@gmail.com</p>
+        </span>
+      </div>
 
-            <div>
-                <i class='bx bxs-envelope'></i>
-                <span>
-                    <p>expendiomares21@gmail.com</p>
-                </span>
-            </div>
-
-
-            <div>
-                <i class='bx bxs-watch'></i>
-                <span>
-                    <p>7:00 p.m. - 11:00 p.m.</p>
-                    <p>Lunes a Viernes</p>
-                </span>
-            </div>
-
-        </div>
-        
-
-
-        <div class="contact">
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ miformulario.nombre }}
-                {{ miformulario.email }}
-                {{ miformulario.contenido }}
-                <button type="submit" class="hero-btn n">Enviar un mensaje</button>
-
-                
-            </form>
-            
-            {% if "valido" in request.GET %}
-            <div class="mensaje">el mensaje se envió exitosamente!</div>
-            {% endif %}
-            
-        </div>
-        
-
-        
+      <div>
+        <i class="bx bxs-watch"></i>
+        <span>
+          <p>7:00 p.m. - 11:00 p.m.</p>
+          <p>Lunes a Viernes</p>
+        </span>
+      </div>
     </div>
-</section>
 
+    <div class="contact">
+      <form action="" method="post">
+        {% csrf_token %} {{ miformulario.nombre }} {{ miformulario.email }} {{
+        miformulario.contenido }}
+        <button type="submit" class="hero-btn n">Enviar un mensaje</button>
+      </form>
+
+      {% if "valido" in request.GET %}
+      <div class="mensaje">el mensaje se envió exitosamente!</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
 
 {% endblock %}

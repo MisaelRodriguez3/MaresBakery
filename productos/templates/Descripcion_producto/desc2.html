@@ -1,4 +1,4 @@
-{% extends "Inicio/base.html" %}
+{% extends "inicio/base.html" %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -7,142 +7,152 @@
     <meta charset="UTF-8" />
     <title>Descripción</title>
     <link rel="stylesheet" href="{% static 'css/desc2.css' %}" />
-    <link rel="stylesheet" href="{% static 'inicio/css/mas.css' %}">
-    <link rel="preload" href="{% static 'inicio/css/mas.css' %}" as="style">
+    <link rel="stylesheet" href="{% static 'inicio/css/mas.css' %}" />
+    <link rel="preload" href="{% static 'inicio/css/mas.css' %}" as="style" />
   </head>
   <body>
     <header>
       <h1>Producto</h1>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
     </header>
 
     <div class="container-title">Seleccionaste... {{ pan.Nombre }}</div>
 
     <main>
-        <div class="container-img">
-          <div class="img-product">
-            <img src="{{ pan.Imagen }}" alt="{{ pan.Nombre }}" />
+      <div class="container-img">
+        <div class="img-product">
+          <img src="{{ pan.Imagen }}" alt="{{ pan.Nombre }}" />
+        </div>
+      </div>
+      <div class="container-info-product">
+        <div class="container-price">
+          <span>${{ pan.Precio }}</span>
+          <i class="fa-solid fa-angles-right"></i>
+        </div>
+
+        <div class="container-details-product">
+          <div class="form-group">
+            <option value=""></option>
           </div>
         </div>
-        <div class="container-info-product">
-          <div class="container-price">
-            <span>${{ pan.Precio }}</span>
-            <i class="fa-solid fa-angles-right"></i>
-          </div>
 
-          <div class="container-details-product">
-            <div class="form-group">
-              <option value=""></option>
+        <div class="container-add-cart">
+          <form
+            data-item-url="{% url 'agregar' pan.IDproducto %}"
+            id="agregar-item"
+            method="post"
+          >
+            {% csrf_token %}
+            <div class="container-cantidad">
+              <input
+                type="number"
+                placeholder="1"
+                min="1"
+                value="1"
+                name="cantidad"
+                id="input-cantidad"
+              />
+              <div class="btn-increment-decrement">
+                <i class="fa-solid fa-chevron-up" id="increment"></i>
+                <i class="fa-solid fa-chevron-down" id="decrement"></i>
+              </div>
             </div>
-            
-          </div>
+            <button type="submit" class="btn-add-to-cart">
+              <i class="fa-solid fa-plus"></i>
+              Añadir al carrito
+            </button>
+          </form>
+        </div>
 
-          <div class="container-add-cart">
+        <div class="container-description">
+          <div class="title-description">
+            <h4>Descripción</h4>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="text-description">
+            <p>{{ pan.Descripcion }}</p>
+          </div>
+        </div>
+
+        <div class="container-reviews">
+          <div class="title-reviews">
+            <h4>Reseñas del pan</h4>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="text-reviews">
             <form
-              data-item-url="{% url 'agregar' pan.IDproducto %}"
-              id="agregar-item"
-              method="post"
+              method="POST"
+              id="form-opinion"
+              data-opinion-url="{% url 'opinion' pan.IDproducto %}"
             >
               {% csrf_token %}
-              <div class="container-cantidad">
-                <input
-                  type="number"
-                  placeholder="1"
-                  min="1"
-                  value="1"
-                  name="cantidad"
-                  id="input-cantidad"
-                />
-                <div class="btn-increment-decrement">
-                  <i class="fa-solid fa-chevron-up" id="increment"></i>
-                  <i class="fa-solid fa-chevron-down" id="decrement"></i>
-                </div>
-              </div>
-              <button type="submit" class="btn-add-to-cart">
-                <i class="fa-solid fa-plus"></i>
-                Añadir al carrito
-              </button>
+              <input
+                type="hidden"
+                name="producto_id"
+                value="{{ pan.IDproducto }}"
+              />
+              <label for="mensaje">Deja aquí tu comentario:</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                placeholder="Nos importa tu opinión, ayúdanos a crecer ;"
+                required
+              ></textarea>
+              <button type="submit">Enviar</button>
             </form>
-          </div>
 
-          <div class="container-description">
-            <div class="title-description">
-              <h4>Descripción</h4>
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="text-description">
-              <p>{{ pan.Descripcion }}</p>
-            </div>
-          </div>
-
-          <div class="container-reviews">
-            <div class="title-reviews">
-              <h4>Reseñas del pan</h4>
-              <i class="fa-solid fa-chevron-down"></i>
-            </div>
-            <div class="text-reviews">
-              <form
-                method="POST"
-                id="form-opinion"
-                data-opinion-url="{% url 'opinion' pan.IDproducto %}"
-              >
-                {% csrf_token %}
-                <input
-                  type="hidden"
-                  name="producto_id"
-                  value="{{ pan.IDproducto }}"
-                />
-                <label for="mensaje">Deja aquí tu comentario:</label>
-                <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  placeholder="Nos importa tu opinión, ayúdanos a crecer ;"
-                  required
-                ></textarea>
-                <button type="submit">Enviar</button>
-              </form>
-
-              <!-- Aqui ira el formulario -->
-            </div>
+            <!-- Aqui ira el formulario -->
           </div>
         </div>
+      </div>
     </main>
-              <!-- overflow hidden -->
-    
+    <!-- overflow hidden -->
+
     <section class="container-related-products">
       <h2>También te puede interesar...</h2>
-      <br>
-      <br>
+      <br />
+      <br />
       <section class="slider">
         <div class="slider-container">
-            {% for producto in otros %}
-            <div class="item">
-                <div class="box">
-                    <div class="slide-img">
-                        <img src="{{ producto.Imagen }}" alt="1">
-                        <div class="overlay">
-                            <a onclick="info_item('{{ producto.IDproducto }}')" class="buy-btn">Ver detalles</a>	
-                        </div>
-                    </div>
-                    <div class="detail-box">
-                        <div class="type">
-                            <a href="#">{{ producto.Nombre }}</a>
-                            <span>$ {{ producto.Precio }}</span>
-                        </div>
-    
-                        <a>
-                            <i  data-item-url="{% url 'agregar' producto.IDproducto %}" data-csrf-token="{{ csrf_token }}" class='bx bxs-plus-circle agregar-item'></i>
-                        </a>
-                    </div>
-                </div>		
+          {% for producto in otros %}
+          <div class="item">
+            <div class="box">
+              <div class="slide-img">
+                <img src="{{ producto.Imagen }}" alt="1" />
+                <div class="overlay">
+                  <a
+                    onclick="info_item('{{ producto.IDproducto }}')"
+                    class="buy-btn"
+                    >Ver detalles</a
+                  >
+                </div>
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="#">{{ producto.Nombre }}</a>
+                  <span>$ {{ producto.Precio }}</span>
+                </div>
+
+                <a>
+                  <i
+                    data-item-url="{% url 'agregar' producto.IDproducto %}"
+                    data-csrf-token="{{ csrf_token }}"
+                    class="bx bxs-plus-circle agregar-item"
+                  ></i>
+                </a>
+              </div>
             </div>
-            {% endfor %}
+          </div>
+          {% endfor %}
         </div>
-       </section>
+      </section>
     </section>
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
     <script
       src="https://kit.fontawesome.com/e2e7faa34f.js"
       crossorigin="anonymous"
