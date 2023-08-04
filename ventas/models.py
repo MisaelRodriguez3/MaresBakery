@@ -47,7 +47,7 @@ class Encargos(models.Model):
         db_table = 'Encargos'
 
     def __str__(self):
-        return self.IDencargo
+        return str(self.IDencargo)
 
 class Facturas(models.Model):
     IDfactura = models.AutoField(primary_key=True)
@@ -86,7 +86,7 @@ class Facturas(models.Model):
         db_table = 'Facturas'
 
     def __str__(self):
-        return self.IDfactura
+        return str(self.IDfactura)
 
 class Info_facturas(models.Model):
     IDinfo_factura = models.AutoField(primary_key=True)
@@ -98,7 +98,7 @@ class Info_facturas(models.Model):
         return self.IDinfo_factura
     
     def idcompra(self):
-        return self.IDfactura
+        return self.IDfactura.IDfactura
     
     def producto(self):
         return self.IDproducto.Nombre
