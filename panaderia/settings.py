@@ -69,6 +69,8 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {
             'access_type': 'online',
         },
+        'OAUTH2_CLIENT_ID': os.environ.get('812796197023-kfckcurqldu1eqvnshpr5qpm1ne8u1tp.apps.googleusercontent.com'),
+        'OAUTH2_SECRET': os.environ.get('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'),
         'OAUTH_PKCE_ENABLED': True,
     },
     'facebook': {
