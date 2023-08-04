@@ -136,7 +136,7 @@ class Clientes_facturas(models.Model):
         return self.IDcliente.username
     
     def compra(self):
-        return self.IDfactura.IDfactura
+        return self.IDfactura
     
     cliente.short_description = 'Cliente'
     compra.short_description = 'ID de la Compra'
