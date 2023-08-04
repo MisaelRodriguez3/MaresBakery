@@ -1,27 +1,24 @@
 const inputCantidad = document.getElementById('input-cantidad');
-  const btnIncrement = document.getElementById('increment');
-  const btnDecrement = document.getElementById('decrement');
-
-  // Agregamos un evento clic al botón de incrementar
-  btnIncrement.addEventListener('click', () => {
-    // Obtenemos el valor actual del input
-    let valorActual = parseInt(inputCantidad.value);
-    
-    // Incrementamos el valor en 1
-    valorActual += 1;
-    
-    // Actualizamos el valor del input con el nuevo valor
+const btnIncrement = document.getElementById('increment');
+const btnDecrement = document.getElementById('decrement');
+// Agregamos un evento clic al botón de incrementar
+btnIncrement.addEventListener('click', () => {
+  // Obtenemos el valor actual del input
+  let valorActual = parseInt(inputCantidad.value);
+  
+  // Incrementamos el valor en 1
+  valorActual += 1;
+  
+  // Actualizamos el valor del input con el nuevo valor
+  inputCantidad.value = valorActual;
+});
+btnDecrement.addEventListener('click', () => {
+  let valorActual = parseInt(inputCantidad.value);
+  if (valorActual > 1) {
+    valorActual -= 1;
     inputCantidad.value = valorActual;
-  });
-
-  btnDecrement.addEventListener('click', () => {
-    let valorActual = parseInt(inputCantidad.value);
-
-    if (valorActual > 1) {
-      valorActual -= 1;
-      inputCantidad.value = valorActual;
-    }
-  });
+  }
+});
 
 // Toggle
 // Constantes Toggle Titles

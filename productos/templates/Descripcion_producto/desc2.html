@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/desc2.css' %}" />
     <link rel="stylesheet" href="{% static 'inicio/css/mas.css' %}" />
     <link rel="preload" href="{% static 'inicio/css/mas.css' %}" as="style" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <header>
@@ -29,7 +30,7 @@
       </div>
       <div class="container-info-product">
         <div class="container-price">
-          <span>${{ pan.Precio }}</span>
+          <span>$ {{ pan.Precio }}</span>
           <i class="fa-solid fa-angles-right"></i>
         </div>
 
@@ -157,7 +158,6 @@
       src="https://kit.fontawesome.com/e2e7faa34f.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{% static 'js/desc2.js' %}"></script>
     <script src="{% static 'js/info_item.js' %}"></script>
