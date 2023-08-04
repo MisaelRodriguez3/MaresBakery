@@ -49,8 +49,8 @@
 
     <div class="contact">
       <form action="" method="post">
-        {% csrf_token %} {{ miformulario.nombre }} {{ miformulario.email }} {{
-        miformulario.contenido }}
+        {% csrf_token %} {{ miformulario.nombre }} {{ miformulario.email }}
+        {{miformulario.contenido }}
         <button type="submit" class="hero-btn n">Enviar un mensaje</button>
       </form>
 
