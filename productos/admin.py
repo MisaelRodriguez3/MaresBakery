@@ -2,6 +2,12 @@ from django.contrib import admin
 from .models import Productos, Categorias, Opiniones
 
 # Register your models here.
+def activar(modeladmin, request, queryset):
+    queryset.update(activo=True)
+
+def desactivar(modeladmin, request, queryset):
+    queryset.update(activo=False)
+
 class CategoriasAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre_categoria')
     ordering = ('IDcategoria',)
@@ -12,6 +18,7 @@ class ProductosAdmin(admin.ModelAdmin):
     ordering = ('IDproducto',)
     search_fields = ('Nombre',)
     list_filter = ('IDcategoria__Nombre_categoria',)
+    actions = [activar, desactivar]
 
 class OpinionesAdmin(admin.ModelAdmin):
     list_display = ('id', 'producto', 'opinion')
