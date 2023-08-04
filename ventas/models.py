@@ -46,6 +46,9 @@ class Encargos(models.Model):
     class Meta:
         db_table = 'Encargos'
 
+    def __str__(self):
+        return self.IDencargo
+
 class Facturas(models.Model):
     IDfactura = models.AutoField(primary_key=True)
     Fecha_pedido = models.DateTimeField(default=timezone.now)
@@ -81,6 +84,9 @@ class Facturas(models.Model):
 
     class Meta:
         db_table = 'Facturas'
+
+    def __str__(self):
+        return self.IDfactura
 
 class Info_facturas(models.Model):
     IDinfo_factura = models.AutoField(primary_key=True)

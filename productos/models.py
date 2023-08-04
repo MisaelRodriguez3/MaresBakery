@@ -62,7 +62,7 @@ class Opiniones(models.Model):
     Opinion = models.CharField(max_length=255)
 
     def id(self):
-        return self.Opinion
+        return self.IDopinion
     
     def producto(self):
         return self.IDproducto.Nombre
