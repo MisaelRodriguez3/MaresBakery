@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proceso de Pago</title>
     <link rel="stylesheet" href="{% static 'pago/style.css' %}" />
-    
-</head>
-<body>
-    
+  </head>
+  <body>
     <main>
-        <div class="box">
-          <div class="inner-box">
-            <div class="forms-wrap">
-              <form action="index.html" autocomplete="off" class="sign-in-form">
-                <div class="logo">
-                  <img src="{% static 'inicio/img/log.png' %}" alt="easyclass" />
-                  <h4>Mares</h4>
-                </div>
-  
-                <div class="heading">
-                  <h2>¡Paga con PayPal!</h2>
-                  <h6>Estas apunto de tomar una de las mejores decisiones</h6>
-                </div>
-  
-                <div class="actual-form">
-                  
-                    <div id="paypal-button-container"></div>
-
-                <br>
-                  <p class="text">
-                    ¡No te detengas! Sigue agregando productos al carrito y disfruta de una experiencia de compra única.
-                    <a href="{% url 'Todos' %}">Continuar comprando</a> 
-                  </p>
-                  
-                  <br>
-                  <p class="text-2">Ten en cuenta que al total de tu compra se le añadirán las comisiones correspondientes por utilizar este método de pago seguro y confiable.</p>
-                </div>
-              </form>
-            </div>
-  
-            <div class="carousel">
-              <div class="images-wrapper">
-                <img src="{% static 'img/aa.jpg' %}" class="image img-1 show" alt="" />
-                <img src="{% static 'img/pan.png' %}" class="image img-2" alt="" />
-                <img src="{% static 'img/cafe.jpg' %}" class="image img-3" alt="" />
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form action="index.html" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <img src="{% static 'inicio/img/log.png' %}" alt="easyclass" />
+                <h4>Mares</h4>
               </div>
-  
-              <div class="text-slider">
-                <div class="text-wrap">
-                  <div class="text-group">
-                    <h2>Ven y recoge tu compra</h2>
-                    <h2>¡Disfruta de nuestros deliciosos panes!</h2>
-                    <h2>Acompáñalos con un buen café.</h2>
-                  </div>
+
+              <div class="heading">
+                <h2>¡Paga con PayPal!</h2>
+                <h6>Estas apunto de tomar una de las mejores decisiones</h6>
+              </div>
+
+              <div class="actual-form">
+                <div id="paypal-button-container"></div>
+
+                <br />
+                <p class="text">
+                  ¡No te detengas! Sigue agregando productos al carrito y
+                  disfruta de una experiencia de compra única.
+                  <a href="{% url 'Todos' %}">Continuar comprando</a>
+                </p>
+
+                <br />
+                <p class="text-2">
+                  Ten en cuenta que al total de tu compra se le añadirán las
+                  comisiones correspondientes por utilizar este método de pago
+                  seguro y confiable.
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img
+                src="{% static 'img/aa.jpg' %}"
+                class="image img-1 show"
+                alt=""
+              />
+              <img
+                src="{% static 'img/pan.png' %}"
+                class="image img-2"
+                alt=""
+              />
+              <img
+                src="{% static 'img/cafe.jpg' %}"
+                class="image img-3"
+                alt=""
+              />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Ven y recoge tu compra</h2>
+                  <h2>¡Disfruta de nuestros deliciosos panes!</h2>
+                  <h2>Acompáñalos con un buen café.</h2>
                 </div>
-  
-                <div class="bullets">
-                  <span class="active" data-value="1"></span>
-                  <span data-value="2"></span>
-                  <span data-value="3"></span>
-                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
               </div>
             </div>
           </div>
         </div>
-      </main>
-      
+      </div>
+    </main>
+
     <!-- Javascript file -->
 
     <script src="{% static 'pago/app.js' %}"></script>
-    
+
     <script src="https://www.paypal.com/sdk/js?client-id=AWoJhWxw6b_ZhVwHecJuFKouL5EW0xq0JqJpx2Z3nj7REJqfM4uK0febJ6dyKthHGAA-n50Sv-_ejZGv&currency=MXN"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -96,20 +111,22 @@
 
       paypal
         .Buttons({
-
           style: {
-                color: 'blue',
-                shape: 'rect', 
-                size: 'small'  
-            },
-
+            color: "blue",
+            shape: "rect",
+            size: "small",
+          },
 
           createOrder: function (data, actions) {
+            var totalAnticipo = (
+              (parseFloat("{{ total_carrito }}") * 1.0395 + 5.5) /
+              2
+            ).toFixed(2);
+            var totalComision = (
+              (parseFloat("{{ total_carrito }}") * 1.0395 + 5.5) /
+              2
+            ).toFixed(2);
 
-            var totalAnticipo = ((parseFloat("{{ total_carrito }}") * 1.0395 + 5.5)/ 2).toFixed(2);
-            var totalComision = ((parseFloat("{{ total_carrito }}") * 1.0395 + 5.5)/ 2).toFixed(2);
-
-           
             return actions.order.create({
               purchase_units: [
                 {
@@ -130,15 +147,20 @@
               const transaction =
                 orderData.purchase_units[0].payments.captures[0];
 
-                const amount = parseFloat("{{ total_carrito }}");
-              
+              const amount = parseFloat("{{ total_carrito }}");
+
               const transactionId = transaction.id;
 
-              const totalAnticipo= parseFloat(transaction.amount.value).toFixed(2);
+              const totalAnticipo = parseFloat(
+                transaction.amount.value
+              ).toFixed(2);
 
               //const totalDescuento = (parseFloat("{{ total_carrito }}") / 2).toFixed(2);
 
-              const totalComision = ((parseFloat("{{ total_carrito }}") * 1.0395 + 5.5)).toFixed(2);
+              const totalComision = (
+                parseFloat("{{ total_carrito }}") * 1.0395 +
+                5.5
+              ).toFixed(2);
 
               const fecha = "{{fecha}}";
 
