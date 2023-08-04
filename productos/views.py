@@ -36,7 +36,7 @@ def detalle_pan(request, producto_id):
         IDproducto=producto_id
     )
     return render(
-        request, "Descripcion_producto/desc2.html", {"pan": pan, "otros": otros}
+        request, "descripcion_producto/desc2.html", {"pan": pan, "otros": otros}
     )
 
 

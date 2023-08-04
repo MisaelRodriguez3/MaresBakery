@@ -9,9 +9,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Productos</title>
-    <link href="{% static 'css/Productos.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/productos.css' %}" rel="stylesheet" />
     <!-- Cargar estilos rapido uwu -->
-    <link rel="preload" href="{% static 'css/Productos.css' %}" as="style" />
+    <link rel="preload" href="{% static 'css/productos.css' %}" as="style" />
   </head>
   <body>
     <header>
@@ -29,7 +29,7 @@
         </figure>
         <div class="info-product">
           <h2>{{ producto.Nombre }}</h2>
-          <p class="price">${{ producto.Precio }}</p>
+          <p class="price">$ {{ producto.Precio }}</p>
         </div>
       </div>
       {% endfor %}

@@ -28,7 +28,7 @@
             <tr class="product-row" onclick="info_item('{{ producto.ID }}')">
               <td><img src="{{ producto.Imagen }}" alt="{{ producto.Nombre }}" /></td>
               <td>{{ producto.Nombre }}</td>
-              <td>${{ producto.Precio }}</td>
+              <td>$ {{ producto.Precio }}</td>
             </tr>
             {% endfor %}
           </tbody>
