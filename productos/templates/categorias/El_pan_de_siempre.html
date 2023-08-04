@@ -1,5 +1,4 @@
 {% extends "inicio/base.html" %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +19,7 @@
     </header>
     <div class="container-items">
       {% for producto in productos %}
-      <div class="item" onclick="info_item({{ producto.IDproducto }})">
+      <div class="item" onclick="info_item('{{ producto.IDproducto }}')">
         <figure>
           <img src="{{ producto.Imagen }}" alt="producto" />
         </figure>
