@@ -23,7 +23,7 @@ class Info_facturasAdmin(admin.ModelAdmin):
 class Info_encargosAdmin(admin.ModelAdmin):
     list_display = ('id', 'idencargo', 'producto', 'Cantidad',)
     ordering = ('IDinfo_encargos',)
-    list_filter = ('IDinfo_encargo',)
+    list_filter = ('IDinfo_encargos',)
 
 class Clientes_facturasAdmin(admin.ModelAdmin):
     list_display = ('ID', 'cliente', 'compra',)
