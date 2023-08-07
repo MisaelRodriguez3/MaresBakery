@@ -279,7 +279,7 @@ def proceso(request):
     context = {
         'total_carrito': str(total_carrito),  # Convertir a cadena (string)
     }
-    return render(request, 'carrito/proceso.html', context) 
+    return render(request, 'carrito\proceso.html', context) 
 
 class GuardarDatosPagoView(View):
     @transaction.atomic
@@ -293,14 +293,12 @@ class GuardarDatosPagoView(View):
             data = json.loads(request.body)
 
             amount = data.get('amount')
-            totalDescuento = data.get('totalDescuento')
             transaction_id = data.get('transactionId')
 
             #guardar datos en Facturas
             factura = Facturas()
             factura.IDcliente = User.objects.get(id=user_id)
             factura.Total_a_pagar = amount
-            factura.Total_comision = totalDescuento
             factura.transaction_id = transaction_id
             factura.Fecha_pedido = timezone.localtime(timezone.now())
             factura.save()
@@ -329,9 +327,7 @@ class GuardarDatosPagoView(View):
             print('Transaction ID:', transaction_id)
             print('User ID autenticado:', user_id)
 
-            metodo = "PayPal"
-            correo_compra_empleados(request, factura=factura.IDfactura, metodo=metodo)
-            correo_compra_clientes(request, factura=factura.IDfactura, metodo=metodo)
+            
             carrito.limpiar()
             # Devolver una respuesta JSON con la clave "success" que indica que el procesamiento fue exitoso
             return JsonResponse({'success': True})
@@ -349,7 +345,7 @@ def proceso_encargo(request, fecha):
         'total_carrito': str(total_carrito),
         'fecha': str(fecha_actual) # Convertir a cadena (string)
     }
-    return render(request, 'carrito/proceso_encargo.html', context)
+    return render(request, 'carrito\proceso_encargo.html', context)
 
 
 class GuardarDatosEncargoView(View):
@@ -368,7 +364,6 @@ class GuardarDatosEncargoView(View):
             amount = data.get('amount')
             transaction_id = data.get('transactionId')
             totalAnticipo = data.get('totalAnticipo')
-            totalComision = data.get('totalComision')
             fecha = data.get('fecha')
             fecha_formateada = datetime.strptime(fecha, "%Y-%m-%d")
 
@@ -377,7 +372,6 @@ class GuardarDatosEncargoView(View):
             encargo.Fecha_entrega = fecha_formateada
             encargo.Anticipo = totalAnticipo
             encargo.Total = amount
-            encargo.Total_comision = totalComision
             encargo.transaction_id=transaction_id
             encargo.Fecha_encargo =timezone.localtime(timezone.now())
             encargo.save()
@@ -401,9 +395,7 @@ class GuardarDatosEncargoView(View):
                 info_encargo.IDproducto = producto
                 info_encargo.Cantidad = cantidad
                 info_encargo.save()
-            metodo = "PayPal"
-            correo_encargo_empleados(request, encargo=encargo.IDencargo, metodo=metodo, fecha=fecha)
-            correo_encargo_clientes(request,encargo=encargo.IDencargo, metodo=metodo, fecha=fecha)
+           
             carrito.limpiar()
             # Devolver una respuesta JSON con la clave "success" que indica que el procesamiento fue exitoso
             return JsonResponse({'success': True})

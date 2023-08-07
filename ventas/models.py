@@ -11,7 +11,6 @@ class Encargos(models.Model):
     IDcliente = models.ForeignKey(User, on_delete=models.CASCADE)
     Anticipo = models.FloatField()
     Total = models.FloatField()
-    Total_comision = models.FloatField(null=True, blank=True)
     transaction_id = models.CharField(max_length=100, blank=True)
 
     def id(self):
@@ -28,9 +27,6 @@ class Encargos(models.Model):
     
     def total(self):
         return f"$ {self.Total}"
-
-    def total_pp(self):
-        return f"$ {self.Total_comision}"
     
     def transaccion(self):
         return self.transaction_id
@@ -40,21 +36,16 @@ class Encargos(models.Model):
     fechab.short_description = 'Fecha de entrega'
     cliente.short_description = 'Cliente'
     total.short_description = 'Total'
-    total_pp.short_description = 'Total con comisión'
     transaccion.short_description = 'ID de la Transacción'
 
     class Meta:
         db_table = 'Encargos'
-
-    def __str__(self):
-        return str(self.IDencargo)
 
 class Facturas(models.Model):
     IDfactura = models.AutoField(primary_key=True)
     Fecha_pedido = models.DateTimeField(default=timezone.now)
     IDcliente = models.ForeignKey(User, on_delete=models.CASCADE)
     Total_a_pagar = models.FloatField()
-    Total_comision = models.FloatField(null=True, blank=True)
     transaction_id = models.CharField(max_length=100, blank=True)
 
     def id(self):
@@ -68,10 +59,7 @@ class Facturas(models.Model):
     
     def total(self):
         return f"$ {self.Total_a_pagar}"
-    
-    def total_pp(self):
-        return f" ${self.Total_comision}"
-    
+      
     def transaccion(self):
         return self.transaction_id
     
@@ -79,14 +67,10 @@ class Facturas(models.Model):
     fecha.short_description = 'Fecha de Compra'
     cliente.short_description = 'Cliente'
     total.short_description = 'Total'
-    total_pp.short_description = 'Total con comisión'
     transaccion.short_description = 'ID de la Transacción'
 
     class Meta:
         db_table = 'Facturas'
-
-    def __str__(self):
-        return str(self.IDfactura)
 
 class Info_facturas(models.Model):
     IDinfo_factura = models.AutoField(primary_key=True)
@@ -98,7 +82,7 @@ class Info_facturas(models.Model):
         return self.IDinfo_factura
     
     def idcompra(self):
-        return self.IDfactura.IDfactura
+        return self.IDfactura
     
     def producto(self):
         return self.IDproducto.Nombre
@@ -136,7 +120,7 @@ class Clientes_facturas(models.Model):
         return self.IDcliente.username
     
     def compra(self):
-        return self.IDfactura
+        return self.IDfactura.IDfactura
     
     cliente.short_description = 'Cliente'
     compra.short_description = 'ID de la Compra'
