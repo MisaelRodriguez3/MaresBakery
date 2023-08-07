@@ -279,7 +279,7 @@ def proceso(request):
     context = {
         'total_carrito': str(total_carrito),  # Convertir a cadena (string)
     }
-    return render(request, 'carrito\proceso.html', context) 
+    return render(request, 'carrito/proceso.html', context) 
 
 class GuardarDatosPagoView(View):
     @transaction.atomic
@@ -345,7 +345,7 @@ def proceso_encargo(request, fecha):
         'total_carrito': str(total_carrito),
         'fecha': str(fecha_actual) # Convertir a cadena (string)
     }
-    return render(request, 'carrito\proceso_encargo.html', context)
+    return render(request, 'carrito/proceso_encargo.html', context)
 
 
 class GuardarDatosEncargoView(View):
