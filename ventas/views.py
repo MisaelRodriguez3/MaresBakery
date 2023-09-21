@@ -136,7 +136,7 @@ def verificar_encargo(request):
 def encargar(request):
     carrito = Carrito(request)
     if request.method == "POST":
-        forma_de_pago = request.POST.get('pago')
+        forma_de_pago = request.POST.get('pago_e')
         fecha = request.POST.get('fecha')
         if "efectivo" in forma_de_pago:
             user_id = request.user.id
