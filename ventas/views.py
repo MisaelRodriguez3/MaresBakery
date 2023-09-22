@@ -145,7 +145,7 @@ def encargar(request):
             encargo = Encargos()
             encargo.IDcliente = User.objects.get(id=user_id)
             encargo.Total = total_carrito
-            encargo.Anticipo #pendiente
+            encargo.Anticipo = 0
             encargo.Fecha_encargo =timezone.localtime(timezone.now())
             encargo.Fecha_entrega = fecha
             encargo.transaction_id = "Pago en efectivo"
