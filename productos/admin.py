@@ -23,7 +23,7 @@ class ProductosAdmin(admin.ModelAdmin):
 class OpinionesAdmin(admin.ModelAdmin):
     list_display = ('id', 'producto', 'opinion')
     search_fields = ('IDproducto__Nombre',)
-    ordering = ('IDopinion')
+    ordering = ('IDopinion',)
     
 admin.site.register(Productos, ProductosAdmin)
 admin.site.register(Categorias, CategoriasAdmin)
