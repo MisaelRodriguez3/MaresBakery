@@ -5,13 +5,13 @@ from .models import Facturas, Encargos, Info_encargos, Info_facturas, Clientes_e
 class FacturasAdmin(admin.ModelAdmin):
     list_display = ('id', 'cliente', 'total', 'transaccion', 'fecha',)
     ordering = ('IDfactura',)
-    search_fields = ('IDfactura', 'cliente',)
+    search_fields = ('IDfactura', 'IDcliente__username',)
     list_filter = ('Fecha_pedido',)
 
 class EncargosAdmin(admin.ModelAdmin):
     list_display = ('id', 'cliente', 'total', 'Anticipo', 'transaccion', 'fechaa', 'fechab',)
     ordering = ('IDencargo',)
-    search_fields = ('IDencargo', 'cliente',)
+    search_fields = ('IDencargo', 'IDcliente__username',)
     list_filter = ('Fecha_encargo', 'Fecha_entrega',)
 
 
