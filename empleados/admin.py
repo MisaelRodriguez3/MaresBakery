@@ -5,8 +5,8 @@ from .models import Empleados
 
 class Empleadosadmin(admin.ModelAdmin):
     list_display = ('id','Nombre','Apellidos','Celular','Correo','hora_inicio', 'hora_fin')
-    search_fields = ('Nombre', 'Apellidos')
-    ordering = ('IDempleado')
+    search_fields = ('Nombre', 'Apellidos',)
+    ordering = ('IDempleado',)
 
 
 admin.site.register(Empleados, Empleadosadmin)
