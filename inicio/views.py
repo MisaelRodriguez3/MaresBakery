@@ -6,7 +6,7 @@ from productos.models import Categorias, Productos
 
 
 def home(request):
-    trending_productos = Productos.objects.filter(IDcategoria_id=5)
+    trending_productos = Productos.objects.filter(IDcategoria_id=5, activo=True)
     return render(
         request, "inicio/home.html", {"trending_productos": trending_productos}
     )
