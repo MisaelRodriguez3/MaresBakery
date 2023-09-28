@@ -14,7 +14,7 @@ def home(request):
 
 def buscar_productos(request):
     busqueda = request.GET.get("cuadro")
-    productos = Productos.objects.filter(Q(Nombre__icontains=busqueda))
+    productos = Productos.objects.filter(Q(Nombre__icontains=busqueda), activo=True)
     resultados = {
         "productos": [
             {
