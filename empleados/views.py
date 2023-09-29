@@ -70,7 +70,7 @@ def correo_encargo_empleados(request, encargo, metodo, fecha):
         for item in info_encargo:
             item.Subtotal = item.IDproducto.Precio * item.Cantidad
         metodo = metodo
-    except Facturas.DoesNotExist:
+    except Encargos.DoesNotExist:
         return render(request, 'ruta_de_tu_app/error.html')
     
     mensaje_empleado = 'Se ha realizado un nuevo encargo por parte de {} {}.'.format(request.user.username, request.user.last_name)

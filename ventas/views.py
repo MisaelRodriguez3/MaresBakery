@@ -170,8 +170,8 @@ def encargar(request):
                 info_encargo.Cantidad = cantidad
                 info_encargo.save()
             metodo = "Efectivo"
-            correo_encargo_empleados(request, encargo=encargo, metodo=metodo, fecha=fecha)
-            correo_encargo_clientes(request,encargo=encargo, metodo=metodo)
+            correo_encargo_empleados(request, encargo=encargo.IDencargo, metodo=metodo, fecha=fecha)
+            correo_encargo_clientes(request,encargo=encargo.IDencargo, metodo=metodo, fecha=fecha)
             carrito.limpiar()
             return redirect('../carrito')
         elif "paypal" in forma_de_pago:
@@ -234,7 +234,7 @@ def correo_encargo_clientes(request, encargo, metodo, fecha):
         for item in info_encargo:
             item.Subtotal = item.IDproducto.Precio * item.Cantidad
         metodo = metodo
-    except Facturas.DoesNotExist:
+    except Encargos.DoesNotExist:
         return render(request, 'ruta_de_tu_app/error.html')
     
     mensaje_cliente = "Su encargo ha sido procesado. Puede pasar a tienda y recogerlo el día acordado dentro del horario laboral."
